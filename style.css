@@ -1,0 +1,467 @@
+:root {
+
+  --almost-white: 0, 0%, 98%;
+  --medium-gray: 0, 0%, 41%;
+  --almost-black: 0, 0%, 8%;
+
+  --neutral-100: hsl(var(--almost-white));
+  --neutral-400: hsl(var(--medium-gray));
+  --neutral-700: hsl(var(--almost-black));
+
+  --fs-100: 1.125rem;
+  --fs-200: 1.35rem;
+  --fs-300: 1.62rem;
+  --fs-400: 1.944rem;
+  --fs-500: 2.3328rem;
+  --fs-600: 2.7993rem;
+  --fs-700: 3.3592rem;
+  --fs-800: 4.0310rem;
+  --fs-900: 4.8372rem;
+
+  --ff-defult: 'Epilogue', sans-serif;
+
+  --fw-100: 100;
+  --fw-200: 200;
+  --fw-300: 300;
+  --fw-400: 400;
+  --fw-500: 500;
+  --fw-600: 600;
+  --fw-700: 700;
+  --fw-800: 800;
+  --fw-900: 900;
+
+
+}
+
+
+/* // https://piccalil.li/blog/a-modern-css-reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* Set core body defaults */
+body {
+
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+
+  font-family: var(--ff-defult);
+  font-size: var(--fs-100);
+  font-weight: var(--fw-500);
+  color: var(--neutral-400);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  text-decoration: none;
+  color: var(--neutral-400);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--neutral-700);
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  background: var(--neutral-100);
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2rem;
+
+}
+
+/* ------------------ Hambergur Menu ------------------ */
+.menu-open {
+  display: none;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 2.3rem;
+  right: 2rem;
+}
+
+.menu-close {
+  display: none;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 2.05rem;
+  right: 2.15rem;
+}
+
+.nav-list>li>a {
+  display: flex;
+  align-items: center;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* ------------------ nav desktop ------------------ */
+
+.nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1.5rem;
+}
+
+.feature {
+  display: none;
+  position: absolute;
+  margin-top: 1rem;
+  line-height: 2.5rem;
+  min-width: max-content;
+  margin-left: -4.5rem;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.feature>li>a {
+  display: flex;
+  align-items: center;
+}
+
+.company {
+  display: none;
+  position: absolute;
+  margin-top: 1rem;
+  line-height: 2.5rem;
+  margin-left: 1rem;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+}
+
+.feature.active {
+
+  display: block;
+}
+
+.company.active {
+
+  display: block;
+}
+
+.logo-container {
+  margin-right: 5%;
+}
+
+.nav-btn-container {
+  margin-left: auto;
+}
+
+
+/* ------------------ nav mobile ------------------ */
+@media (max-width:780px) {
+
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 220px;
+    height: 100%;
+    background: var(--neutral-100);
+    z-index: 1000;
+    padding: 5rem 5rem 2rem 1.5rem;
+  }
+
+  .nav.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: -2.5rem;
+    margin-top: 1rem;
+  }
+
+  .menu-open {
+    display: block;
+    z-index: 1001;
+  }
+
+  .menu-close {
+    display: none;
+    z-index: 1001;
+  }
+
+  .menu-open.active {
+    display: none;
+  }
+
+  .menu-close.active {
+    display: block;
+  }
+
+  /* ------------------ mobile menu dropdown ------------------ */
+
+  .nav-list {
+    line-height: 2.5rem;
+  }
+
+  .feature {
+    position: relative;
+    display: none;
+    margin-left: 1rem;
+    margin-top: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+  }
+
+  .feature>li>a {
+    display: flex;
+    align-items: center;
+  }
+
+  .company {
+    position: relative;
+    display: none;
+    margin-left: 1rem;
+    margin-top: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+  }
+
+  .feature.active {
+    display: block;
+  }
+
+  .company.active {
+    display: block;
+  }
+
+}
+
+/* ------------------ hero desktop ------------------ */
+
+main {
+  width: 100%;
+  display: grid;
+  padding-bottom: 10rem;
+  padding-top: 2rem;
+
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0 clamp(2rem, 15%, 10rem);
+  column-gap: clamp(2rem, 10%, 10rem);
+}
+
+
+.hero-text-container {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero-text-container>h1 {
+  font-weight: var(--fw-700);
+  font-size: var(--fs-900);
+  color: var(--neutral-700);
+  line-height: 1;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.hero-text-container>p {
+  width: 75%;
+  margin-bottom: auto;
+}
+
+.hero-text-container>a {
+  margin-right: auto;
+  margin-bottom: auto;
+
+}
+
+.companies-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.companies-container>img {
+  margin-right: 2rem;
+  height: fit-content;
+}
+
+.hero-image-container {
+  flex-basis: 50%;
+
+}
+
+.hero-text-container>h1::before {
+  content: "Make\A remote work";
+  white-space: pre;
+}
+
+/* ------------------ hero mobile ------------------ */
+@media (max-width:780px) {
+  main {
+    padding-top: 0;
+  
+  }
+  .hero-container {
+    flex-direction: column-reverse;
+    margin: 0 0;
+   justify-content: center;
+   row-gap: 3rem;
+  }
+.hero-text-container{
+  text-align: center;
+  margin: 0 1rem;
+}
+.hero-text-container>p{
+  width: 100%;
+  margin-top: 2rem;
+}
+.hero-text-container>a{
+  margin: 2rem auto;
+}
+
+.companies-container>img {
+  margin-right: 1rem;
+}
+
+  .hero-image-container>img {
+    content: url(./images/image-hero-mobile.png);
+  }
+
+  .hero-text-container>h1::before {
+    content: "Make remote work";
+    font-size: var(--fs-500);
+  }
+
+
+}
+
+/* ------------------ Buttons ------------------ */
+
+.btn {
+  border: 2px solid var(--neutral-400);
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  text-decoration: none;
+  color: var(--neutral-400);
+}
+
+.btn:hover,
+.btn:focus-visible {
+  border: 2px solid var(--neutral-700);
+  color: var(--neutral-700);
+}
+
+.btn-without-border {
+  border: none;
+}
+
+.btn-without-border:hover,
+.btn-without-border:focus-visible {
+  border: none;
+  color: var(--neutral-700);
+}
+
+.btn-reverse {
+  color: var(--neutral-100);
+  border-color: var(--neutral-700);
+  background-color: var(--neutral-700);
+}
+
+.btn-reverse:hover,
+.btn-reverse:focus-visible {
+  color: var(--neutral-700);
+  border-color: var(--neutral-700);
+  background-color: var(--neutral-100);
+}
